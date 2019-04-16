@@ -6,17 +6,19 @@ using System.Threading.Tasks;
 
 namespace LinkedList
 {
-    public class NodeClass
+    public class Node
     {
         //Class Fields
         private char value;
-        private NodeClass next = null;
+        private Node next = null;
+        private Node previous = null;
 
         //Defined and Default Constructor
-        public NodeClass(char v, NodeClass next)
+        public Node(char v, Node next, Node previous)
         {
             this.value = v;
-            this.next = next; //sets the value of the next to the other links
+            this.next = next; //sets the value of the next to the following link
+            this.previous = previous; //sets the value of the next to the previous link
         }
 
         //Properties
@@ -32,7 +34,7 @@ namespace LinkedList
             }
         }
 
-        public NodeClass Next
+        public Node Next
         {
             get
             {
@@ -41,6 +43,18 @@ namespace LinkedList
             set
             {
                 this.next = value;
+            }
+        }
+
+        public Node Previous
+        {
+            get
+            {
+                return this.previous;
+            }
+            set
+            {
+                this.previous = value;
             }
         }
     }
