@@ -4,24 +4,34 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LinkedList
+namespace LinkedListCustom
 {
-    class List
+    public class LinkedList
     {
         //Class Fields
-        private List list;
+        private LinkedList list;
         private Node head;
         private Node tail;
         private int size = 0;
 
         //Default Constructor
-        public List()
+        public LinkedList()
         {
             //creates a new node, initialized to null, and assigns it to head
             this.head = null;
             this.tail = null;
             this.size = 0;
         }
+
+        //Properties
+        public int Size
+        {
+            get
+            {
+                return this.size;
+            }
+        }
+
 
         //Methods
         public void AddHead(char value)
@@ -126,6 +136,7 @@ namespace LinkedList
                     if (this.size > 1)
                     {
                         output = currentNode.Value;
+                        //currentNode.Previous = currentNode.Next;
                         temp = currentNode.Previous;
                         temp.Next = currentNode.Next; //skips the current node and effectively removes it from the chain
                         size--;
@@ -144,7 +155,7 @@ namespace LinkedList
                     head = currentNode;
                     return true;
                 }
-                currentNode = currentNode.Next;
+                currentNode = currentNode.Next; //acts as a counter
             }
             return false;
         }

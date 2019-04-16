@@ -1,0 +1,5 @@
+E:\Random (HDD)\LCC CS\gitHubRepo\CS260\CS260Lab3\LinkedList\bin\Debug\LinkedList.dll
+E:\Random (HDD)\LCC CS\gitHubRepo\CS260\CS260Lab3\LinkedList\bin\Debug\LinkedList.pdb
+E:\Random (HDD)\LCC CS\gitHubRepo\CS260\CS260Lab3\LinkedList\obj\Debug\LinkedListCustom.csproj.CoreCompileInputs.cache
+E:\Random (HDD)\LCC CS\gitHubRepo\CS260\CS260Lab3\LinkedList\obj\Debug\LinkedList.dll
+E:\Random (HDD)\LCC CS\gitHubRepo\CS260\CS260Lab3\LinkedList\obj\Debug\LinkedList.pdb
