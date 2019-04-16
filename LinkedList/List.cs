@@ -27,18 +27,17 @@ namespace LinkedList
         public void AddHead(char value)
         {
             //IF SIZE IS GREATER THAN 1
-            //takes the currrent head, assigns it to the next value in the constructor
+            //takes the currrent head, assigns it to the next value, a new node/link
             //create a new node
                 //assign it the value parameter
-                //assign the next property to temp
                 //assign new node to head
             if(this.size > 1)
             {
-                Node next = new Node(value, head, tail);
+                Node next = new Node(value, head, null);
                 head = next;
                 size++;
             }
-            //ELSE IF SIZE IS 1
+            //ELSE IF SIZE IS EQUAL TO 1
             //create a new node and assign it to the tail and head
             //create a new node
                 //assign it the value parameter
@@ -46,11 +45,12 @@ namespace LinkedList
                 //assign new node to head
             else if(this.size == 1)
             {
-                Node next = new Node(value, head, tail);
+                Node next = new Node(value, head, null);
                 head = next;
-                tail = next;
+                tail = next.Next; //this is the original head node
                 size++;
             }
+            //if the list is starting out, the head and tail will both equal the first value inputted
             else if(this.size < 1)
             {
                 Node next = new Node(value, head, tail);
@@ -58,25 +58,23 @@ namespace LinkedList
                 tail = next;
                 size++;
             }
-
-
-
-
-
         }
 
         public char RemoveHead()
         {
-            //test to see if list has values, if empty throw exception
-            //creates a node for temp storage
-                //sets head equal to the next item it is referencing
-                //decrements size
-            if(size >= 1)
+            if (this.size > 1)
             {
-                Node temp = head;
+                char output = head.Value;
                 head = head.Next;
                 size--;
-                return temp.Value;
+                return output;
+            }
+            else if (this.size == 1)
+            {
+                char output = head.Value;
+                head = head.Next; //gets the next node in the sequence and sets it to the head
+                size--;
+                return output;
             }
             else
             {
@@ -114,14 +112,36 @@ namespace LinkedList
                 //return true 
             //if value is not present
                 //return false
+
+            //WHAT I NEED TO KNOW:
+                //the current node location
+                //the previous node location, and the next node location
             Node currentNode = head;
             while (currentNode != null)
             {
                 if (currentNode.Value == value)
                 {
-                    Node temp = head;
-                    head = head.Next;
-                    size--;
+                    Node temp;
+                    char output;
+                    if (this.size > 1)
+                    {
+                        output = currentNode.Value;
+                        temp = currentNode.Previous;
+                        temp.Next = currentNode.Next; //skips the current node and effectively removes it from the chain
+                        size--;
+                    }
+                    else if (this.size == 1)
+                    {
+                        output = currentNode.Value;
+                        head = null;
+                        tail = null;
+                        size--;
+                    }
+                    while (currentNode != null)
+                    {
+                        currentNode = currentNode.Previous; //sets the currentNode back to the first
+                    }
+                    head = currentNode;
                     return true;
                 }
                 currentNode = currentNode.Next;
