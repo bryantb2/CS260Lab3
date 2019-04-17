@@ -129,7 +129,7 @@ namespace UnitTesting
             Assert.AreEqual(true, result);
         }
 
-        
+        [Test]
         public void FindKey()
         {
             //also a test of the DisplayList method
@@ -139,7 +139,7 @@ namespace UnitTesting
             linkedList.AddHead('d'); //head
             Assert.AreEqual(true, linkedList.FindKey('a')); //first run
             Assert.AreEqual(true, linkedList.FindKey('a')); //second run of same value
-            //Assert.AreEqual(true, linkedList.FindKey('a')); //third run
+            Assert.AreEqual(true, linkedList.FindKey('a')); //third run
             //Assert.AreEqual(false, linkedList.FindKey('F'));
         }
 
