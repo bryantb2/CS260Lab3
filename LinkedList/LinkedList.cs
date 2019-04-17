@@ -14,6 +14,12 @@ namespace LinkedListCustom
         private Node tail;
         private int size = 0;
 
+        //tracking aspects of iter and key methods
+        private Node iter = null; //keeps track of the node as a key for searching
+        private bool hasKeyBeenFound = false;
+        private char keyValue;
+
+
         //Default Constructor
         public LinkedList()
         {
@@ -145,7 +151,117 @@ namespace LinkedListCustom
 
         }
 
-        public bool FindValue(char value)
+        public bool FindKey(char key) //will find one instance of the value and, if called again, will search for the next if applicable
+        {
+            //create a node to act as a counter
+            //iterate through the list under the
+                //condition that the current node is not the last (i.e. NULL)
+            //check to see if key has been used previously AND it ran successfully last time
+                //if so, start at the iter and search through the list
+                //if there are no values that match the iter, set all fields back to default states and return false
+            //if value is not equal
+                //set iter to the node in which the value exists
+                //return true
+            //otherwise
+                //return false and set iter to null
+            Node currentNode;
+            if (hasKeyBeenFound == true && keyValue == key) //if the current and previously used key are the same AND the same key had been found before, start at the iter
+            {
+                if (iter == tail) //if the found value/node is at the end of the list, start at the beginning and look for the same value
+                {
+                    currentNode = head;
+                    while (currentNode != null)
+                    {
+                        if (currentNode.Value == key)
+                        {
+                            iter = currentNode;
+                            hasKeyBeenFound = true;
+                            keyValue = key;
+                            return true;
+                        }
+                        else if (currentNode == tail)
+                        {
+                            iter = null;
+                            hasKeyBeenFound = false;
+                            return false;
+                        }
+                        currentNode = currentNode.Next;
+                    }
+                }
+                else //if the found value is not at the end of the list
+                {
+                    currentNode = iter.Next;
+                    while (currentNode != null)
+                    {
+                        if (currentNode.Value == key)
+                        {
+                            iter = currentNode;
+                            hasKeyBeenFound = true;
+                            keyValue = key;
+                            return true;
+                        }
+                        else if (currentNode == tail)
+                        {
+                            iter = null;
+                            hasKeyBeenFound = false;
+                            return false;
+                        }
+                        currentNode = currentNode.Next;
+                    }
+                }
+            }
+            else //under this, the key does not match the last one used, meaning the user wants to commence a new search
+            {
+                currentNode = head;
+                while (currentNode != null)
+                {
+                    if (currentNode.Value == key)
+                    {
+                        iter = currentNode;
+                        hasKeyBeenFound = true;
+                        keyValue = key;
+                        return true;
+                    }
+                    else if (currentNode == tail)
+                    {
+                        iter = null;
+                        hasKeyBeenFound = false;
+                        return false;
+                    }
+                    currentNode = currentNode.Next;
+                }
+            }
+            return false; //if the code reaches this point, there is a possible internal logic error
+        }
+
+        public bool InsertKey(char value)
+        {
+            //if hasKeyBeenFound is true
+                //replace the value within the iter node with the value argument, return true
+            //if hasKeyBeenFound is false
+                //do not replace the value and return false
+            if (hasKeyBeenFound == true)
+            {
+                iter.Value = value;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool deleteKey(char key)
+        {
+            return false;
+        }
+
+        public bool deleteIter()
+        {
+            return false;
+        }
+
+        public bool FindValue(char value) //only finds first instance of the value
         {
             //create a node to act as a counter
             //iterate through the list under the
