@@ -45,7 +45,7 @@ namespace LinkedListCustom
             {
                 Node next = new Node(value, head, null);
                 head = next;
-                Node temp = head.Next;
+                Node temp = head.Next; //assigning a previous value to the previously added node, so it does not equal null
                 temp.Previous = next;
                 size++;
             }
@@ -60,12 +60,52 @@ namespace LinkedListCustom
                 Node next = new Node(value, head, null);
                 head = next;
                 tail = head.Next; //this is the original head node
-                Node temp = head.Next;
+                Node temp = head.Next; //assigning a previous value to the previously added node, so it does not equal null
                 temp.Previous = next;
                 size++;
             }
             //if the list is starting out, the head and tail will both equal the first value inputted
             else if(this.size < 1)
+            {
+                Node next = new Node(value, null, null);
+                head = next;
+                tail = next;
+                size++;
+            }
+        }
+
+        public void AddTail(char value)
+        {
+            //IF SIZE IS GREATER THAN 1
+            //takes the currrent tail, assigns it to the next value, a new node/link
+            //create a new node
+            //assign it the value parameter
+            //assign new node to tail
+            if (this.size > 1)
+            {
+                Node next = new Node(value, null, tail);
+                tail = next;
+                Node temp = tail.Previous; //assigning a next value to the previously added node, so it does not equal null
+                temp.Next = next;
+                size++;
+            }
+            //ELSE IF SIZE IS EQUAL TO 1
+            //create a new node and assign it to the tail and head
+            //create a new node
+            //assign it the value parameter
+            //assign the next property to temp
+            //assign new node to tail
+            else if (this.size == 1)
+            {
+                Node next = new Node(value, null, tail);
+                tail = next;
+                head = tail.Previous; //this is the original head node
+                Node temp = tail.Previous; //assigning a next value to the previously added node, so it does not equal null
+                temp.Next = next;
+                size++;
+            }
+            //if the list is starting out, the head and tail will both equal the first value inputted
+            else if (this.size < 1)
             {
                 Node next = new Node(value, null, null);
                 head = next;
@@ -135,7 +175,6 @@ namespace LinkedListCustom
             {
                 if (currentNode.Value == value)
                 {
-                    Node temp;
                     bool isNotAtFirstLink = false;
                     char output;
                     if (this.size > 1)
@@ -170,14 +209,14 @@ namespace LinkedListCustom
                         tail = null;
                         size--;
                     }
-                    if (isNotAtFirstLink == true)
+                    if (isNotAtFirstLink == true) //sets node back to first in series, assuming that the currentNode references a node in the middle of the list
                     {
-                        while (currentNode != null)
+                        while (currentNode.Previous != null)
                         {
                             currentNode = currentNode.Previous;
                         }
                     }
-                    head = currentNode;
+                    this.head = currentNode;
                     return true;
                 }
                 currentNode = currentNode.Next; //acts as a counter

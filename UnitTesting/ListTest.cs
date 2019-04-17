@@ -39,12 +39,28 @@ namespace UnitTesting
         public void AddHeadTest()
         {
             //also a test of the DisplayList method
+            //tail
             linkedList.AddHead('a');
             linkedList.AddHead('b');
             linkedList.AddHead('c');
             linkedList.AddHead('d');
+            //head
             //prints backwards
             Assert.AreEqual("d c b a ", linkedList.DisplayList());
+        }
+
+        [Test]
+        public void AddTailTest()
+        {
+            //also a test of the DisplayList method
+            //head
+            linkedList.AddTail('a');
+            linkedList.AddTail('b');
+            linkedList.AddTail('c');
+            linkedList.AddTail('d');
+            //tail
+            //prints backwards
+            Assert.AreEqual("a b c d ", linkedList.DisplayList());
         }
 
         [Test]
@@ -85,8 +101,13 @@ namespace UnitTesting
             linkedList.AddHead('c');
             linkedList.AddHead('d'); //head
             Assert.AreEqual(true, linkedList.FindRemove('a'));
-            //Assert.AreEqual("c b b ", linkedList.DisplayList());
+            Assert.AreEqual("d c b ", linkedList.DisplayList());
         }
+
+
+
+
+
 
 
 
