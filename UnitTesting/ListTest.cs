@@ -140,8 +140,31 @@ namespace UnitTesting
             Assert.AreEqual(true, linkedList.FindKey('a')); //first run
             Assert.AreEqual(true, linkedList.FindKey('a')); //second run of same value
             Assert.AreEqual(true, linkedList.FindKey('a')); //third run
-            //Assert.AreEqual(false, linkedList.FindKey('F'));
+            Assert.AreEqual(false, linkedList.FindKey('F'));
         }
+
+        [Test]
+        public void InsertKeyTest()
+        {
+            //also a test of the DisplayList method
+            linkedList.AddHead('a'); //tail
+            linkedList.AddHead('b');
+            linkedList.AddHead('c');
+            linkedList.AddHead('d'); //head
+            Assert.AreEqual(true, linkedList.FindKey('a')); //finds key
+            Assert.AreEqual(true, linkedList.InsertKey('F')); //changes key
+            Assert.AreEqual(true, linkedList.FindKey('F'));
+            Assert.AreEqual(true, linkedList.InsertKey('E'));
+            Assert.AreEqual(true, linkedList.FindKey('E'));
+            Assert.AreEqual(false, linkedList.FindKey('G'));
+            Assert.AreEqual(false, linkedList.InsertKey('G'));
+        }
+
+
+
+
+
+
 
 
 

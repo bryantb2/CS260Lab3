@@ -243,6 +243,11 @@ namespace LinkedListCustom
             if (hasKeyBeenFound == true)
             {
                 iter.Value = value;
+                Node currentNode = iter;
+                while (currentNode != null)
+                {
+                    currentNode = currentNode.Previous;
+                }
                 return true;
             }
             else
@@ -251,15 +256,51 @@ namespace LinkedListCustom
             }
         }
 
-        public bool deleteKey(char key)
+        /*(public bool deleteKey(char key)
         {
-            return false;
-        }
+            //if key is equal to the value in the node
+                //delete the node
+            //if iter is equal to the key
+                //set iter to null
+                //return true
+            //if key has not been found
+                //return false
+            Node currentNode = head;
+            bool isInMiddleOrEnd = false; //tracks where the current node is in the sequence
+            while (currentNode != null)
+            {
+                if (currentNode.Value == key && currentNode == head)
+                {
+                    if (currentNode == iter)
+                        iter = null;
+                    RemoveHead(); //if the head is selected for removal, move forward one
+                }
+                else if (currentNode.Value == key )
+                {
+                    if (currentNode == iter)
+                        iter = null;
 
-        public bool deleteIter()
-        {
-            return false;
-        }
+                    isInMiddleOrEnd = true;
+                }
+                else if (currentNode.Value == key && currentNode == tail)
+                {
+                    if (currentNode == iter)
+                        iter = null;
+                    RemoveTail(); //if tail is selected for removal
+                    isInMiddleOrEnd = true;
+                }
+                else
+                {
+                    return false;
+                }
+                currentNode = currentNode.Next;
+            }
+
+            if (isInMiddleOrEnd == true)
+            {
+
+            }
+        } */
 
         public bool FindValue(char value) //only finds first instance of the value
         {
