@@ -12,6 +12,7 @@ namespace UnitTesting
     class ListTest
     {
         LinkedList linkedList;
+        LinkedList linkedList2;
         Node link1;
         Node link2;
         Node link3;
@@ -22,6 +23,7 @@ namespace UnitTesting
         {
             //List container
             linkedList = new LinkedList();
+            linkedList2 = new LinkedList();
             //Links
             link1 = new Node('a', link2, null);
             link2 = new Node('b', link3, link1);
@@ -176,6 +178,26 @@ namespace UnitTesting
             Assert.AreEqual(true, linkedList.FindKey('E'));
             Assert.AreEqual(false, linkedList.FindKey('a'));
             Assert.AreEqual("d F b E ", linkedList.DisplayList());
+        }
+
+        [Test]
+        public void AppendListTest()
+        {
+            //also a test of the DisplayList method
+            //first linkedList
+            linkedList.AddHead('a'); //tail
+            linkedList.AddHead('b');
+            linkedList.AddHead('a');
+            linkedList.AddHead('d'); //head
+
+            //second linkedList2
+            linkedList.AddHead('a'); //tail
+            linkedList.AddHead('b');
+            linkedList.AddHead('a');
+            linkedList.AddHead('d'); //head
+
+            linkedList.AppendList(linkedList2);
+            Assert.AreEqual("d a b a d a b a ", linkedList.DisplayList());
         }
 
 

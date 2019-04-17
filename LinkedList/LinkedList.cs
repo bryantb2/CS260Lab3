@@ -38,7 +38,6 @@ namespace LinkedListCustom
             }
         }
 
-
         //Methods
         public void AddHead(char value)
         {
@@ -399,6 +398,27 @@ namespace LinkedListCustom
                 currentNode = currentNode.Next; //acts as a counter
             }
             return false;
+        }
+
+        public void AppendList(LinkedList list2)
+        {
+            //iterate through the second list
+            //add currentNode to tail of first list
+            //stop when the next value is null
+            Node currentNode = list2.head;
+            bool endOfStream = false;
+            while (currentNode != null)
+            {
+                if (currentNode == list2.tail)
+                {
+                    endOfStream = true; //stops the list from moving past the end
+                }
+                else if (endOfStream == false)
+                {
+                    list.AddTail(currentNode.Value);
+                }
+                currentNode = currentNode.Next;
+            }
         }
 
         public string DisplayList()
