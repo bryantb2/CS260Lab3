@@ -242,17 +242,29 @@ namespace LinkedListCustom
                 //do not replace the value and return false
             if (hasKeyBeenFound == true)
             {
-                iter.Value = value;
+                iter.Value = value; //sets value
                 Node currentNode = iter;
-                while (currentNode != null)
+                if (currentNode == head)
                 {
-                    currentNode = currentNode.Previous;
+                    head = iter; //if the head is equivalent to the iter, then set it to the head
+                    return true;
                 }
-                return true;
+                else
+                {
+                    while (currentNode != null)
+                    {
+                        if (currentNode == head)
+                        {
+                            head = currentNode; //sets head to the new node value
+                        }
+                        currentNode = currentNode.Previous;
+                    }
+                    return true; 
+                }
             }
             else
             {
-                return false;
+                return false; //this means that the FindKey has not been used
             }
         }
 
