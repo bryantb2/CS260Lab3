@@ -116,14 +116,7 @@ namespace LinkedListCustom
 
         public char RemoveHead()
         {
-            if (this.size > 1)
-            {
-                char output = head.Value;
-                head = head.Next;
-                size--;
-                return output;
-            }
-            else if (this.size == 1)
+            if (this.size >= 1)
             {
                 char output = head.Value;
                 head = head.Next; //gets the next node in the sequence and sets it to the head
@@ -134,9 +127,24 @@ namespace LinkedListCustom
             {
                 throw new Exception("Cannot remove head from an empty list");
             }
-            
         }
-        
+
+        public char RemoveTail()
+        {
+            if (this.size >= 1)
+            {
+                char output = tail.Value;
+                tail = tail.Previous;
+                size--;
+                return output;
+            }
+            else
+            {
+                throw new Exception("Cannot remove head from an empty list");
+            }
+
+        }
+
         public bool FindValue(char value)
         {
             //create a node to act as a counter
@@ -230,9 +238,18 @@ namespace LinkedListCustom
                 //so long as the node is not null, add the value to the string
             string output = "";
             Node currentNode = head;
-            while (currentNode != null)
+            bool endOfStream = false;
+            while (currentNode != null )//|| currentNode != tail.Next)
             {
-                output += currentNode.Value + " ";
+                if (currentNode == tail)
+                {
+                    output += currentNode.Value + " ";
+                    endOfStream = true; //this ensures that no node values past the end of tail can be printed
+                }
+                else if (currentNode != tail && endOfStream == false)
+                {
+                    output += currentNode.Value + " ";
+                }
                 currentNode = currentNode.Next;
             }
             return output;

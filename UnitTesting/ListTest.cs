@@ -75,9 +75,27 @@ namespace UnitTesting
             char removedValue = linkedList.RemoveHead();
             int postSize = linkedList.Size;
             //prints backwards
+            Assert.AreEqual('d', removedValue);
             Assert.AreEqual("c b a ", linkedList.DisplayList());
             Assert.AreEqual(preSize, (postSize +1));
+        }
+
+        [Test]
+        public void RemoveTailTest()
+        {
+            //also a test of the DisplayList method
+            linkedList.AddTail('a'); //head
+            linkedList.AddTail('b');
+            linkedList.AddTail('c');
+            linkedList.AddTail('d'); //tail
+            int preSize = linkedList.Size;
+            char removedValue = linkedList.RemoveTail();
+            int postSize = linkedList.Size;
+            //prints backwards
             Assert.AreEqual('d', removedValue);
+            Assert.AreEqual("a b c ", linkedList.DisplayList());
+            Assert.AreEqual(preSize, (postSize + 1));
+            
         }
 
         [Test]
@@ -104,6 +122,12 @@ namespace UnitTesting
             Assert.AreEqual("d c b ", linkedList.DisplayList());
         }
 
+        [Test]
+        public void IsEmptyTest()
+        {
+            bool result = linkedList.IsEmpty();
+            Assert.AreEqual(true, result);
+        }
 
 
 
