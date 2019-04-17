@@ -45,6 +45,8 @@ namespace LinkedListCustom
             {
                 Node next = new Node(value, head, null);
                 head = next;
+                Node temp = head.Next;
+                temp.Previous = next;
                 size++;
             }
             //ELSE IF SIZE IS EQUAL TO 1
@@ -57,13 +59,15 @@ namespace LinkedListCustom
             {
                 Node next = new Node(value, head, null);
                 head = next;
-                tail = next.Next; //this is the original head node
+                tail = head.Next; //this is the original head node
+                Node temp = head.Next;
+                temp.Previous = next;
                 size++;
             }
             //if the list is starting out, the head and tail will both equal the first value inputted
             else if(this.size < 1)
             {
-                Node next = new Node(value, head, tail);
+                Node next = new Node(value, null, null);
                 head = next;
                 tail = next;
                 size++;
@@ -132,25 +136,46 @@ namespace LinkedListCustom
                 if (currentNode.Value == value)
                 {
                     Node temp;
+                    bool isNotAtFirstLink = false;
                     char output;
                     if (this.size > 1)
                     {
                         output = currentNode.Value;
-                        //currentNode.Previous = currentNode.Next;
-                        temp = currentNode.Previous;
-                        temp.Next = currentNode.Next; //skips the current node and effectively removes it from the chain
+                        if (currentNode == head)
+                        {
+                            currentNode = currentNode.Next; //if the head is selected for removal, move forward one
+                        }
+                        else if (currentNode == tail)
+                        {
+                            currentNode = currentNode.Previous; //if the tail is selected for removal, move back one
+                            currentNode.Next = null;
+                            tail = currentNode;
+                            isNotAtFirstLink = true;
+                        }
+                        else
+                        {
+                            currentNode = currentNode.Previous; //moves to one node behind the chosen one
+                            currentNode.Next = currentNode.Next; //sets the next node to one beyond the node chosen for removal
+                            isNotAtFirstLink = true;
+                        }
+                        //temp = currentNode;
+                        //temp.Previous = currentNode.Previous;
+                        //temp.Next = currentNode.Next; //skips the current node and effectively removes it from the chain
                         size--;
                     }
                     else if (this.size == 1)
                     {
                         output = currentNode.Value;
-                        head = null;
+                        currentNode = null;
                         tail = null;
                         size--;
                     }
-                    while (currentNode != null)
+                    if (isNotAtFirstLink == true)
                     {
-                        currentNode = currentNode.Previous; //sets the currentNode back to the first
+                        while (currentNode != null)
+                        {
+                            currentNode = currentNode.Previous;
+                        }
                     }
                     head = currentNode;
                     return true;
