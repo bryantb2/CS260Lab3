@@ -6,13 +6,15 @@ using System.Threading.Tasks;
 
 namespace LinkedListCustom
 {
-    public class Node
+    public class Node<T>
+
+
     {
         //Class Fields
-        private char value;
+        private T value;
 
         //Defined and Default Constructor
-        public Node(char v, Node next, Node previous)
+        public Node(T v, Node<T> next, Node<T> previous)
         {
             this.value = v;
             this.Next = next; //sets the value of the next to the following link
@@ -20,7 +22,7 @@ namespace LinkedListCustom
         }
 
         //Properties
-        public char Value
+        public T Value
         {
             get
             {
@@ -32,8 +34,13 @@ namespace LinkedListCustom
             }
         }
 
-        public Node Next { get; set; } = null;
+        public Node<T> Next { get; set; } = null;
 
-        public Node Previous { get; set; } = null;
+        public Node<T> Previous { get; set; } = null;
+
+        public override string ToString()
+        {
+            return this.value.ToString();
+        }
     }
 }

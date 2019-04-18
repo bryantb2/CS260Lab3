@@ -6,18 +6,20 @@ using System.Threading.Tasks;
 
 namespace LinkedListCustom
 {
-    public class LinkedList
+    public class LinkedList<T> 
+
+
     {
         //Class Fields
-        private LinkedList list;
-        private Node head;
-        private Node tail;
+        //private LinkedList<T> list;
+        private Node<T> head;
+        private Node<T> tail;
         private int size = 0;
 
         //tracking aspects of iter and key methods
-        private Node iter = null; //keeps track of the node as a key for searching
+        private Node<T> iter = null; //keeps track of the node as a key for searching
         private bool hasKeyBeenFound = false;
-        private char keyValue;
+        private T keyValue;
 
 
         //Default Constructor
@@ -39,7 +41,7 @@ namespace LinkedListCustom
         }
 
         //Methods
-        public void AddHead(char value)
+        public void AddHead(T value)
         {
             //IF SIZE IS GREATER THAN 1
             //takes the currrent head, assigns it to the next value, a new node/link
@@ -48,9 +50,9 @@ namespace LinkedListCustom
                 //assign new node to head
             if(this.size > 1)
             {
-                Node next = new Node(value, head, null);
+                Node<T> next = new Node<T>(value, head, null);
                 head = next;
-                Node temp = head.Next; //assigning a previous value to the previously added node, so it does not equal null
+                Node<T> temp = head.Next; //assigning a previous value to the previously added node, so it does not equal null
                 temp.Previous = next;
                 size++;
             }
@@ -62,24 +64,24 @@ namespace LinkedListCustom
                 //assign new node to head
             else if(this.size == 1)
             {
-                Node next = new Node(value, head, null);
+                Node<T> next = new Node<T>(value, head, null);
                 head = next;
                 tail = head.Next; //this is the original head node
-                Node temp = head.Next; //assigning a previous value to the previously added node, so it does not equal null
+                Node<T> temp = head.Next; //assigning a previous value to the previously added node, so it does not equal null
                 temp.Previous = next;
                 size++;
             }
             //if the list is starting out, the head and tail will both equal the first value inputted
             else if(this.size < 1)
             {
-                Node next = new Node(value, null, null);
+                Node<T> next = new Node<T>(value, null, null);
                 head = next;
                 tail = next;
                 size++;
             }
         }
-
-        public void AddTail(char value)
+        
+        public void AddTail(T value)
         {
             //IF SIZE IS GREATER THAN 1
             //takes the currrent tail, assigns it to the next value, a new node/link
@@ -88,9 +90,9 @@ namespace LinkedListCustom
             //assign new node to tail
             if (this.size > 1)
             {
-                Node next = new Node(value, null, tail);
+                Node<T> next = new Node<T>(value, null, tail);
                 tail = next;
-                Node temp = tail.Previous; //assigning a next value to the previously added node, so it does not equal null
+                Node<T> temp = tail.Previous; //assigning a next value to the previously added node, so it does not equal null
                 temp.Next = next;
                 size++;
             }
@@ -102,28 +104,28 @@ namespace LinkedListCustom
             //assign new node to tail
             else if (this.size == 1)
             {
-                Node next = new Node(value, null, tail);
+                Node<T> next = new Node<T>(value, null, tail);
                 tail = next;
                 head = tail.Previous; //this is the original head node
-                Node temp = tail.Previous; //assigning a next value to the previously added node, so it does not equal null
+                Node<T> temp = tail.Previous; //assigning a next value to the previously added node, so it does not equal null
                 temp.Next = next;
                 size++;
             }
             //if the list is starting out, the head and tail will both equal the first value inputted
             else if (this.size < 1)
             {
-                Node next = new Node(value, null, null);
+                Node<T> next = new Node<T>(value, null, null);
                 head = next;
                 tail = next;
                 size++;
             }
         }
 
-        public char RemoveHead()
+        public T RemoveHead()
         {
             if (this.size >= 1)
             {
-                char output = head.Value;
+                T output = head.Value;
                 head = head.Next; //gets the next node in the sequence and sets it to the head
                 size--;
                 return output;
@@ -134,11 +136,11 @@ namespace LinkedListCustom
             }
         }
 
-        public char RemoveTail()
+        public T RemoveTail()
         {
             if (this.size >= 1)
             {
-                char output = tail.Value;
+                T output = tail.Value;
                 tail = tail.Previous;
                 size--;
                 return output;
@@ -150,7 +152,7 @@ namespace LinkedListCustom
 
         }
 
-        public bool FindKey(char key) //will find one instance of the value and, if called again, will search for the next if applicable
+        public bool FindKey(T key) //will find one instance of the value and, if called again, will search for the next if applicable
         {
             //create a node to act as a counter
             //iterate through the list under the
@@ -163,15 +165,15 @@ namespace LinkedListCustom
                 //return true
             //otherwise
                 //return false and set iter to null
-            Node currentNode;
-            if (hasKeyBeenFound == true && keyValue == key) //if the current and previously used key are the same AND the same key had been found before, start at the iter
+            Node<T> currentNode;
+            if (hasKeyBeenFound == true && keyValue.ToString() == key.ToString()) //if the current and previously used key are the same AND the same key had been found before, start at the iter
             {
                 if (iter == tail) //if the found value/node is at the end of the list, start at the beginning and look for the same value
                 {
                     currentNode = head;
                     while (currentNode != null)
                     {
-                        if (currentNode.Value == key)
+                        if (currentNode.Value.ToString() == key.ToString())
                         {
                             iter = currentNode;
                             hasKeyBeenFound = true;
@@ -192,7 +194,7 @@ namespace LinkedListCustom
                     currentNode = iter.Next;
                     while (currentNode != null)
                     {
-                        if (currentNode.Value == key)
+                        if (currentNode.Value.ToString() == key.ToString())
                         {
                             iter = currentNode;
                             hasKeyBeenFound = true;
@@ -214,7 +216,7 @@ namespace LinkedListCustom
                 currentNode = head;
                 while (currentNode != null)
                 {
-                    if (currentNode.Value == key)
+                    if (currentNode.Value.ToString() == key.ToString())
                     {
                         iter = currentNode;
                         hasKeyBeenFound = true;
@@ -233,7 +235,7 @@ namespace LinkedListCustom
             return false; //if the code reaches this point, there is a possible internal logic error
         }
 
-        public bool InsertKey(char value)
+        public bool InsertKey(T value)
         {
             //if hasKeyBeenFound is true
                 //replace the value within the iter node with the value argument, return true
@@ -242,7 +244,7 @@ namespace LinkedListCustom
             if (hasKeyBeenFound == true)
             {
                 iter.Value = value; //sets value
-                Node currentNode = iter;
+                Node<T> currentNode = iter;
                 if (currentNode == head)
                 {
                     head = iter; //if the head is equivalent to the iter, then set it to the head
@@ -313,17 +315,17 @@ namespace LinkedListCustom
             }
         } */
 
-        public bool FindValue(char value) //only finds first instance of the value
+        public bool FindValue(T value) //only finds first instance of the value
         {
             //create a node to act as a counter
             //iterate through the list under the
             //condition that the current node is not the last (i.e. NULL)
-                //return true if value present
-                //return false if code breaks out of loop
-            Node currentNode = head;
+            //return true if value present
+            //return false if code breaks out of loop
+            Node<T> currentNode = head;
             while (currentNode != null)
             {
-                if (currentNode.Value == value)
+                if (currentNode.Value.ToString() == value.ToString())
                 {
                     return true;
                 }
@@ -332,27 +334,27 @@ namespace LinkedListCustom
             return false;
         }
 
-        public bool FindRemove(char value)
+        public bool FindRemove(T value)
         {
             //create a node to act as a counter
             //iterate through the list under the
             //condition that the current node is not the last (i.e. NULL)
             //if value present
-                //delete the current node
-                //return true 
+            //delete the current node
+            //return true 
             //if value is not present
-                //return false
+            //return false
 
             //WHAT I NEED TO KNOW:
-                //the current node location
-                //the previous node location, and the next node location
-            Node currentNode = head;
+            //the current node location
+            //the previous node location, and the next node location
+            Node<T> currentNode = head;
             while (currentNode != null)
             {
-                if (currentNode.Value == value)
+                if (currentNode.Value.ToString() == value.ToString())
                 {
                     bool isNotAtFirstLink = false;
-                    char output;
+                    T output;
                     if (this.size > 1)
                     {
                         output = currentNode.Value;
@@ -400,12 +402,12 @@ namespace LinkedListCustom
             return false;
         }
 
-        public void AppendList(LinkedList list2)
+        public void AppendList(LinkedList<T> list2)
         {
             //iterate through the second list
             //add currentNode to tail of first list
             //stop when the next value is null
-            Node currentNode = list2.head;
+            Node<T> currentNode = list2.head;
             bool endOfStream = false;
             while (currentNode != null)
             {
@@ -415,18 +417,18 @@ namespace LinkedListCustom
                 }
                 else if (endOfStream == false)
                 {
-                    list.AddTail(currentNode.Value);
+                    this.AddTail(currentNode.Value);
                 }
                 currentNode = currentNode.Next;
             }
         }
-
+        
         public string DisplayList()
         {
             //iterate through the list
                 //so long as the node is not null, add the value to the string
             string output = "";
-            Node currentNode = head;
+            Node<T> currentNode = head;
             bool endOfStream = false;
             while (currentNode != null )//|| currentNode != tail.Next)
             {
@@ -444,7 +446,7 @@ namespace LinkedListCustom
             return output;
         }
 
-        public void AddSorted(char value)
+        public void AddSorted(T value)
         {
             //setup a variable to store the head
                 //iterate through the list

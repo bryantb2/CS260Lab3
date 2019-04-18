@@ -11,17 +11,17 @@ namespace UnitTesting
     [TestFixture]
     public class NodeTest
     {
-        Node link1;
-        Node link2;
-        Node link3;
-        Node link = null;
+        Node<char> link1;
+        Node<char> link2;
+        Node<char> link3;
+        Node<char> link = null;
 
         [SetUp]
         public void Setup()
         {
-            link1 = new Node('a', link2, null);
-            link2 = new Node('b', link3, link1);
-            link3 = new Node('c', null, link2);
+            link1 = new Node<char>('a', link2, null);
+            link2 = new Node<char>('b', link3, link1);
+            link3 = new Node<char>('c', null, link2);
         }
 
         [Test]
