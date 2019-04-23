@@ -1,0 +1,6 @@
+E:\Random (HDD)\LCC CS\gitHubRepo\CS260\CS260Lab3\StudentClasses\bin\Debug\StudentClasses.dll
+E:\Random (HDD)\LCC CS\gitHubRepo\CS260\CS260Lab3\StudentClasses\bin\Debug\StudentClasses.pdb
+E:\Random (HDD)\LCC CS\gitHubRepo\CS260\CS260Lab3\StudentClasses\obj\Debug\StudentClasses.csprojAssemblyReference.cache
+E:\Random (HDD)\LCC CS\gitHubRepo\CS260\CS260Lab3\StudentClasses\obj\Debug\StudentClasses.csproj.CoreCompileInputs.cache
+E:\Random (HDD)\LCC CS\gitHubRepo\CS260\CS260Lab3\StudentClasses\obj\Debug\StudentClasses.dll
+E:\Random (HDD)\LCC CS\gitHubRepo\CS260\CS260Lab3\StudentClasses\obj\Debug\StudentClasses.pdb

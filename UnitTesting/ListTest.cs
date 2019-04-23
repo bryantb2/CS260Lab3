@@ -13,10 +13,10 @@ namespace UnitTesting
     {
         LinkedListCustom.LinkedList<char> linkedList;
         LinkedListCustom.LinkedList<char> linkedList2;
-        Node<char> link1;
+        /*Node<char> link1;
         Node<char> link2;
         Node<char> link3;
-        Node<char> link4;
+        Node<char> link4; */
 
         [SetUp]
         public void Setup()
@@ -25,10 +25,10 @@ namespace UnitTesting
             linkedList = new LinkedListCustom.LinkedList<char>();
             linkedList2 = new LinkedListCustom.LinkedList<char>();
             //Links
-            link1 = new Node<char>('a', link2, null);
+            /*link1 = new Node<char>('a', link2, null);
             link2 = new Node<char>('b', link3, link1);
             link3 = new Node<char>('c', link4, link2);
-            link4 = new Node<char>('d', null, link3);
+            link4 = new Node<char>('d', null, link3);*/
         }
 
         [Test]
@@ -199,28 +199,5 @@ namespace UnitTesting
             linkedList.AppendList(linkedList2);
             Assert.AreEqual("d a b a d a b a ", linkedList.DisplayList());
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 }

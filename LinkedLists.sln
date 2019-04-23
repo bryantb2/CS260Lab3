@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinkedListCustom", "LinkedL
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTesting", "UnitTesting\UnitTesting.csproj", "{3E551BB4-1D5D-4A40-8D71-353EE95F2C9C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentClasses", "StudentClasses\StudentClasses.csproj", "{D01F68E3-D528-4D68-893D-0255FB353666}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{3E551BB4-1D5D-4A40-8D71-353EE95F2C9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3E551BB4-1D5D-4A40-8D71-353EE95F2C9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3E551BB4-1D5D-4A40-8D71-353EE95F2C9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D01F68E3-D528-4D68-893D-0255FB353666}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D01F68E3-D528-4D68-893D-0255FB353666}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D01F68E3-D528-4D68-893D-0255FB353666}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D01F68E3-D528-4D68-893D-0255FB353666}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

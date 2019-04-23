@@ -10,3 +10,6 @@ D:\Random\LCC\CS260\Lab3\CS260Lab3\LinkedList\obj\Debug\LinkedListCustom.csprojA
 D:\Random\LCC\CS260\Lab3\CS260Lab3\LinkedList\obj\Debug\LinkedListCustom.csproj.CoreCompileInputs.cache
 D:\Random\LCC\CS260\Lab3\CS260Lab3\LinkedList\obj\Debug\LinkedList.dll
 D:\Random\LCC\CS260\Lab3\CS260Lab3\LinkedList\obj\Debug\LinkedList.pdb
+E:\Random (HDD)\LCC CS\gitHubRepo\CS260\CS260Lab3\LinkedList\bin\Debug\StudentClasses.dll
+E:\Random (HDD)\LCC CS\gitHubRepo\CS260\CS260Lab3\LinkedList\bin\Debug\StudentClasses.pdb
+E:\Random (HDD)\LCC CS\gitHubRepo\CS260\CS260Lab3\LinkedList\obj\Debug\LinkedListCustom.csproj.CopyComplete

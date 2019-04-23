@@ -22,3 +22,5 @@ D:\Random\LCC\CS260\Lab3\CS260Lab3\UnitTesting\obj\Debug\UnitTesting.csproj.Core
 D:\Random\LCC\CS260\Lab3\CS260Lab3\UnitTesting\obj\Debug\UnitTesting.csproj.CopyComplete
 D:\Random\LCC\CS260\Lab3\CS260Lab3\UnitTesting\obj\Debug\UnitTesting.dll
 D:\Random\LCC\CS260\Lab3\CS260Lab3\UnitTesting\obj\Debug\UnitTesting.pdb
+E:\Random (HDD)\LCC CS\gitHubRepo\CS260\CS260Lab3\UnitTesting\bin\Debug\StudentClasses.dll
+E:\Random (HDD)\LCC CS\gitHubRepo\CS260\CS260Lab3\UnitTesting\bin\Debug\StudentClasses.pdb

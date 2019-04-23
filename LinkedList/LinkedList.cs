@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using StudentClasses;
 
 namespace LinkedListCustom
 {
@@ -371,8 +372,15 @@ namespace LinkedListCustom
                         }
                         else
                         {
+                            /*
                             currentNode = currentNode.Previous; //moves to one node behind the chosen one
                             currentNode.Next = currentNode.Next; //sets the next node to one beyond the node chosen for removal
+                            */
+                            Node<T> prev = currentNode.Previous;
+                            Node<T> next = currentNode.Next;
+                            prev.Next = next;
+
+
                             isNotAtFirstLink = true;
                         }
                         //temp = currentNode;
@@ -413,6 +421,7 @@ namespace LinkedListCustom
             {
                 if (currentNode == list2.tail)
                 {
+                    this.AddTail(currentNode.Value);
                     endOfStream = true; //stops the list from moving past the end
                 }
                 else if (endOfStream == false)
@@ -425,25 +434,52 @@ namespace LinkedListCustom
         
         public string DisplayList()
         {
-            //iterate through the list
-                //so long as the node is not null, add the value to the string
-            string output = "";
-            Node<T> currentNode = head;
-            bool endOfStream = false;
-            while (currentNode != null )//|| currentNode != tail.Next)
+            if(typeof(T)== typeof(Student))
             {
-                if (currentNode == tail)
+                //iterate through the list
+                //so long as the node is not null, add the value to the string
+                string output = "";
+                Node<T> currentNode = head;
+                bool endOfStream = false;
+                while (currentNode != null)//|| currentNode != tail.Next)
                 {
-                    output += currentNode.Value + " ";
-                    endOfStream = true; //this ensures that no node values past the end of tail can be printed
+                    if (currentNode == tail)
+                    {
+                        T tempStudent = currentNode.Value;
+                        output += tempStudent.ToString() + " ";
+                        endOfStream = true; //this ensures that no node values past the end of tail can be printed
+                    }
+                    else if (currentNode != tail && endOfStream == false)
+                    {
+                        T tempStudent = currentNode.Value;
+                        output += tempStudent.ToString() + " ";
+                    }
+                    currentNode = currentNode.Next;
                 }
-                else if (currentNode != tail && endOfStream == false)
-                {
-                    output += currentNode.Value + " ";
-                }
-                currentNode = currentNode.Next;
+                return output;
             }
-            return output;
+            else
+            {
+                //iterate through the list
+                //so long as the node is not null, add the value to the string
+                string output = "";
+                Node<T> currentNode = head;
+                bool endOfStream = false;
+                while (currentNode != null)//|| currentNode != tail.Next)
+                {
+                    if (currentNode == tail)
+                    {
+                        output += currentNode.Value + " ";
+                        endOfStream = true; //this ensures that no node values past the end of tail can be printed
+                    }
+                    else if (currentNode != tail && endOfStream == false)
+                    {
+                        output += currentNode.Value + " ";
+                    }
+                    currentNode = currentNode.Next;
+                }
+                return output;
+            }
         }
 
         public void AddSorted(T value)
